@@ -4,7 +4,7 @@ This is a lightweight javascript 2-way-data-binding framework, implemented as a 
 
 ## Advantages
 
-- Really lightweight
+- Really lightweight, ~ 1kB (minified and gzipped)
 - does not need any [CSP](https://en.wikipedia.org/wiki/Content_Security_Policy) permissions.
 - 2-way-binding
 
