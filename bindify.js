@@ -28,7 +28,10 @@
         // Enable writing back data from the DOM to the model.
         if   ( settings.updateModel)
             $(el).find('[data-'+prefix+'value]').each( function() {
+                // Change listener for writing back the input to the model
+                // First, remove any other listeners
                 $(this).off(settings.updateEvent);
+                // Now create the listener for new input values.
                 $(this).on(settings.updateEvent, function() {
 
                     if   ( settings.debug )
@@ -69,16 +72,20 @@
         // This function is called recursively for all DOM children.
         let bind = function( element,data) {
 
+            // Value binding for input elements
+            // input values are written back to the data model
             let dataValue = element.data(prefix+'value');
             if   ( dataValue ) {
                 element.val( getData( dataValue, data ) );
-                // Change listener for writing back the input to the model
+                // A change listener is already created.
             }
 
+            // Binding for the node content.
             let dataText = element.data(prefix+'text');
             if   ( dataText )
                 element.text( getData( dataText, data ) );
 
+            // Binding for the attributes.
             let dataAttributes = element.data(prefix+'attributes');
             if   ( dataAttributes ) {
                 // JQuery is parsing the JSON automatically
@@ -87,6 +94,7 @@
                 },this);
             }
 
+            // Binding for a list
             let dataList = element.data(prefix+'list');
             if   ( dataList ) {
                 let eachData = getData( dataList, data );
@@ -97,6 +105,9 @@
                 let shouldLength = eachData.length;
                 if   ( isLength > 0 )
                 {
+                    if   ( settings.debug )
+                        console.log("List "+dataList+" has "+isLength+ " entrys, should have "+shouldLength);
+
                     // Add children to force the correct children count
                     for( let i=isLength+1; i<=shouldLength; i++ )
                         firstChild.clone().appendTo( element );
@@ -104,6 +115,7 @@
                     for( let i=shouldLength+1; i<=isLength; i++ )
                         element.children().last().remove();
 
+                    let children     = $(element).children();
                     let key = dataList;
                     let dataVar = element.data(prefix+'var');
                     if   ( dataVar )
