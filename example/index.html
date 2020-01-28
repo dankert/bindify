@@ -1,0 +1,27 @@
+<html>
+<head><title data-bind-text="overview"></title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
+    <script src="../bindify.js" defer></script>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="app.css" />
+</head>
+<body data-bind-attributes="{&quot;class&quot;:&quot;theme.class&quot;}">
+
+<p>This is an example for javascript data binding.</p>
+<p>
+<em>Try to change the following name:</em>
+
+Name: <input span data-bind-value="person.name" />
+</p>
+
+<p>The Name is <b data-bind-text="person.fullname"></b></p>
+
+<p>
+Some Names in a list:
+<ul data-bind-list="names" data-bind-var="name">
+    <li data-bind-text="name"></li>
+</ul>
+</p>
+
+</body>
+</html>

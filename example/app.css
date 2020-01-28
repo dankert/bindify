@@ -1,0 +1,6 @@
+/* Very simple theming. */
+
+body.theme-silver {
+    color: saddlebrown;
+    background-color: silver;
+}
