@@ -50,9 +50,11 @@ You are able to set some configuration settings for the plugin:
 
 - `updateDOM`: Should the DOM elements be updated after the data model has changed? Default: yes.
 - `updateModel`: Should the data model be updated after user input? Default: yes.
+- `prefix`: Prefix for data binding attributes. Default: 'binding'.
 - `debug`: the debug mode is logging to the browser console. Default: off.
 - `afterBind`: a user callback which is called after the initial bind.
 - `onModelUpdate`: a user callback which is called after the data model has changed.
+- `addUpdateHook`: adds an `update()` function to the data object (Default: no)
 
 ## FAQ
 
